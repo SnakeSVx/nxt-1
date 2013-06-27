@@ -31,6 +31,7 @@ public class SimpleStateTest {
 		
 		final StateMachine stateMachine = new StateMachine(states, states.get(1), terminatingStates);
 		stateMachine.start();
+
 		
 		Button.ENTER.addButtonListener(new ButtonListener(){
 

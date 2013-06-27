@@ -8,8 +8,13 @@ import be.svx.nx4.events.AproachingObstacleEvent;
 public class ObjectDetectedTrigger extends Thread {
 
 	private StateMachine stateMachine;
+    private int timeout;
+
+    public ObjectDetectedTrigger(StateMachine stateMachine){
+        this(stateMachine, 100);
+    }
 	
-	public ObjectDetectedTrigger(StateMachine stateMachine){
+	public ObjectDetectedTrigger(StateMachine stateMachine, int timeout){
 		this.stateMachine = stateMachine;
 		this.start();
 	}
@@ -28,10 +33,9 @@ public class ObjectDetectedTrigger extends Thread {
         	}
         }// end synchronize block - main thread can run now
         try {
-			Thread.sleep(100); //TODO do we need the sleep?
+			Thread.sleep(timeout);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//TODO do something
 		}
       }
     }
