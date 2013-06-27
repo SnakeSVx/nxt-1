@@ -22,15 +22,11 @@ public abstract class Transition extends BaseInfo {
 	
 	public abstract boolean isApplicable(Event event);
 	
-	public void perform(Event event){
-		perform(event, null);
-	}
-	
-	public State perform(Event event, State previousState){
-		if(previousState != null){
-			previousState.exit(event);
+	public State perform(Event event, Session session){
+		if(source != null){
+			source.exit(event, session);
 		}
-		this.target.enter(event);
+		this.target.enter(event, session);
 		return this.target;
 	}
 

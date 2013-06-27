@@ -35,8 +35,8 @@ public abstract class State extends BaseInfo {
 		this.active = false;
 	}
 	
-	public abstract void enter(Event event);
-	public abstract void exit(Event event);
+	public abstract void enter(Event event, Session session);
+	public abstract void exit(Event event, Session session);
 	
 	public void addTransition(Transition transition){
 		transitions.add(transition);
